@@ -7,5 +7,7 @@ namespace ChromaticCanvas.ApplicationLogic.Abstractions
 {
     public interface IResourceRepository : IRepository<Resource>
     {
+       Resource GetResourceById(Guid id);
+        
     }
 }
