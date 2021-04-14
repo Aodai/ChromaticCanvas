@@ -7,5 +7,6 @@ namespace ChromaticCanvas.ApplicationLogic.Abstractions
 {
     public interface IInvoiceRepository : IRepository<Invoice>
     {
+        Invoice GetInvoiceById(Guid id);
     }
 }
