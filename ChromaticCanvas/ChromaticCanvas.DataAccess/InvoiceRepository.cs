@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ChromaticCanvas.ApplicationLogic.Abstractions;
+using ChromaticCanvas.ApplicationLogic.DataModel;
+using System;
+using System.Linq;
 
 namespace ChromaticCanvas.DataAccess
 {
-    class InvoiceRepository
+    public class InvoiceRepository : BaseRepository<Invoice>, IInvoiceRepository
     {
+        public InvoiceRepository(ChromaticCanvasDbContext dbContext) : base(dbContext) { }
+        public Invoice GetInvoiceById(Guid id)
+        {
+            return dbContext.Invoices
+                .Where(invoice => invoice.ID == id).SingleOrDefault();
+        }
     }
 }
