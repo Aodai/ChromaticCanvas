@@ -9,5 +9,5 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2.1.0
-      - run: cd ChromaticCanvas
+      - run: ls
       - run: dotnet test
