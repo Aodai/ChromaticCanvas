@@ -1,3 +1,4 @@
+using ChromaticCanvas.ApplicationLogic.Services;
 using ChromaticCanvas.Data;
 using ChromaticCanvas.DataAccess;
 using Microsoft.AspNetCore.Builder;
@@ -28,14 +29,24 @@ namespace ChromaticCanvas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ChromaticCanvasDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddDbContext<ChromaticCanvasDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<AttendeesService>();
+            services.AddScoped<BookingsService>();
+            services.AddScoped<EventsService>();
+            services.AddScoped<InvoicesService>();
+            services.AddScoped<MembersService>();
+            services.AddScoped<PaymentsService>();
+            services.AddScoped<ResourcesService>();
+            services.AddScoped<SubscriptionsService>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
