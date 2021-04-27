@@ -5,7 +5,8 @@ namespace ChromaticCanvas.DataAccess
 {
     public class ChromaticCanvasDbContext : DbContext
     {
-        ChromaticCanvasDbContext(DbContextOptions<ChromaticCanvasDbContext> options) : base(options)
+        public ChromaticCanvasDbContext() { }
+        public ChromaticCanvasDbContext(DbContextOptions<ChromaticCanvasDbContext> options) : base(options)
         {
         }
 
