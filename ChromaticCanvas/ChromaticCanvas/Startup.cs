@@ -1,3 +1,4 @@
+using ChromaticCanvas.ApplicationLogic.Abstractions;
 using ChromaticCanvas.ApplicationLogic.Services;
 using ChromaticCanvas.Data;
 using ChromaticCanvas.DataAccess;
@@ -38,6 +39,14 @@ namespace ChromaticCanvas
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddScoped<IAttendeeRepository, AttendeeRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IResourceRepository, ResourceRepository>();
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
             services.AddScoped<AttendeesService>();
             services.AddScoped<BookingsService>();
             services.AddScoped<EventsService>();
