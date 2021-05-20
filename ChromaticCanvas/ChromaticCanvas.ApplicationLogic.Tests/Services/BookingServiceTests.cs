@@ -34,8 +34,8 @@ namespace ChromaticCanvas.ApplicationLogic.Tests.Services
                 ID = Guid.NewGuid(),
                 Organizer = user,
                 Name = "Graduation",
-                StartDate = DateTime.Parse("20/5/2021 18:00:00"),
-                EndDate = DateTime.Parse("20/5/2021 22:00:00")
+                StartDate = DateTime.Parse("1/1/2021 18:00:00"),
+                EndDate = DateTime.Parse("1/1/2021 22:00:00")
             };
 
             var booking = new Booking
