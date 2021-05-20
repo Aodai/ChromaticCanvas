@@ -7,7 +7,7 @@ namespace ChromaticCanvas.ApplicationLogic.DataModel
     public class Event
     {
         public Guid ID { get; set; }
-        public Member Organizer { get; set; }
+        public ApplicationUser Organizer { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime StartDate { get; set; }

@@ -1,6 +1,5 @@
 using ChromaticCanvas.ApplicationLogic.Abstractions;
 using ChromaticCanvas.ApplicationLogic.Services;
-using ChromaticCanvas.Data;
 using ChromaticCanvas.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,17 +32,13 @@ namespace ChromaticCanvas
             services.AddDbContext<ChromaticCanvasDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<ChromaticCanvasDbContext>();
 
             services.AddScoped<IAttendeeRepository, AttendeeRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
-            services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IPaymentRepository, PaymentRepository>();
             services.AddScoped<IResourceRepository, ResourceRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
@@ -51,7 +46,6 @@ namespace ChromaticCanvas
             services.AddScoped<BookingsService>();
             services.AddScoped<EventsService>();
             services.AddScoped<InvoicesService>();
-            services.AddScoped<MembersService>();
             services.AddScoped<PaymentsService>();
             services.AddScoped<ResourcesService>();
             services.AddScoped<SubscriptionsService>();

@@ -8,6 +8,6 @@ namespace ChromaticCanvas.ApplicationLogic.DataModel
     {
         public Guid Id { get; set; }
         public Event Event { get; set; }
-        public Member User { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }
