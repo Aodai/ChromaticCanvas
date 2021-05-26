@@ -4,14 +4,16 @@ using ChromaticCanvas.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ChromaticCanvas.DataAccess.Migrations
 {
     [DbContext(typeof(ChromaticCanvasDbContext))]
-    partial class ChromaticCanvasDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210526140830_AddIdentity")]
+    partial class AddIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

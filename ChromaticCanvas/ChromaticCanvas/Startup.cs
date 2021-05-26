@@ -1,4 +1,5 @@
 using ChromaticCanvas.ApplicationLogic.Abstractions;
+using ChromaticCanvas.ApplicationLogic.DataModel;
 using ChromaticCanvas.ApplicationLogic.Services;
 using ChromaticCanvas.DataAccess;
 using Microsoft.AspNetCore.Builder;
@@ -32,7 +33,7 @@ namespace ChromaticCanvas
             services.AddDbContext<ChromaticCanvasDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ChromaticCanvasDbContext>();
 
             services.AddScoped<IAttendeeRepository, AttendeeRepository>();
